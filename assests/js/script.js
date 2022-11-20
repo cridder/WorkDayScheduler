@@ -4,12 +4,12 @@ $(document).ready(function () {
   $("#currentDay").text(vtime);
   // get and set hour
   var htime = dayjs().format("HH");
-  //grabs hour from each time slot and compares it to actual time
+  //get id of div and splits it to compare that time to hour of day
   $(".time-div").each(function () {
     var timeDiv = $(this).attr("id").split("-")[1];
-    console.log(" the div is " + timeDiv);
-    console.log(" the HH is " + htime);
-    console.log("  ");
+    // console.log(" the div is " + timeDiv);
+    // console.log(" the HH is " + htime);
+    // console.log("  ");
     if (htime == timeDiv) {
       $(this).addClass("present");
     } else if (htime < timeDiv) {
@@ -20,22 +20,17 @@ $(document).ready(function () {
       $(this).addClass("past");
     }
   });
-  //grabs values from time and value divs and saves them to local storage
+  //get values and saves to local
   $(".saveBtn").click(function (event) {
     event.preventDefault();
     var value = $(this).siblings(".time-block").val();
     var time = $(this).parent().attr("id").split("-")[1];
     localStorage.setItem(time, value);
+    // console.log(" the val is " + value);
+    // console.log(" the time is " + time);
+    // console.log("  "); 
   });
-  //retrieves items from local storage and sets them in proper places
-  $("#hour-01 .description").val(localStorage.getItem("01"));
-  $("#hour-02 .description").val(localStorage.getItem("02"));
-  $("#hour-03 .description").val(localStorage.getItem("03"));
-  $("#hour-04 .description").val(localStorage.getItem("04"));
-  $("#hour-05 .description").val(localStorage.getItem("05"));
-  $("#hour-06 .description").val(localStorage.getItem("06"));
-  $("#hour-07 .description").val(localStorage.getItem("07"));
-  $("#hour-08 .description").val(localStorage.getItem("08"));
+  //get local storage values and sets them
   $("#hour-09 .description").val(localStorage.getItem("09"));
   $("#hour-10 .description").val(localStorage.getItem("10"));
   $("#hour-11 .description").val(localStorage.getItem("11"));
@@ -45,11 +40,4 @@ $(document).ready(function () {
   $("#hour-15 .description").val(localStorage.getItem("15"));
   $("#hour-16 .description").val(localStorage.getItem("16"));
   $("#hour-17 .description").val(localStorage.getItem("17"));
-  $("#hour-18 .description").val(localStorage.getItem("18"));
-  $("#hour-19 .description").val(localStorage.getItem("19"));
-  $("#hour-20 .description").val(localStorage.getItem("20"));
-  $("#hour-21 .description").val(localStorage.getItem("21"));
-  $("#hour-22 .description").val(localStorage.getItem("22"));
-  $("#hour-23 .description").val(localStorage.getItem("23"));
-  $("#hour-24 .description").val(localStorage.getItem("24"));
 });
